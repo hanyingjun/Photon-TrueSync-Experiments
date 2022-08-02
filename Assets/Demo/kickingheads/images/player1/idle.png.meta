@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: e37035536e5f9f04c8b7ab9f88fb7399
-timeCreated: 1460990407
-licenseType: Store
 TextureImporter:
   fileIDToRecycleName:
     21300000: idle_0
@@ -10,14 +8,17 @@ TextureImporter:
     21300006: idle_3
     21300008: idle_4
     21300010: idle_5
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -26,37 +27,59 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: idle_0
+    - serializedVersion: 2
+      name: idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -66,16 +89,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -34, y: 69}
-        - {x: -54, y: 56}
-        - {x: -54, y: -39}
-        - {x: -39, y: -80}
-        - {x: 24, y: -80}
-        - {x: 45, y: -50}
-        - {x: 45, y: 59}
-        - {x: 10, y: 69}
-    - name: idle_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc06fe7e556e5c469ec9a027906f7bc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_1
       rect:
         serializedVersion: 2
         x: 126
@@ -85,17 +109,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -37, y: 68}
-        - {x: -40, y: 67}
-        - {x: -53, y: 39}
-        - {x: -53, y: -12}
-        - {x: -33, y: -80}
-        - {x: 14, y: -80}
-        - {x: 45, y: -40}
-        - {x: 45, y: 40}
-        - {x: 2, y: 68}
-    - name: idle_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa60bb29df05984e8ab1cf4f8bd02f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_2
       rect:
         serializedVersion: 2
         x: 252
@@ -105,18 +129,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -1, y: 67}
-        - {x: -23, y: 67}
-        - {x: -48, y: 50}
-        - {x: -53, y: 45}
-        - {x: -53, y: -26}
-        - {x: -34, y: -80}
-        - {x: 22, y: -80}
-        - {x: 45, y: -49}
-        - {x: 45, y: 32}
-        - {x: 41, y: 50}
-    - name: idle_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10cb572aaa8463428ad0fd45d9ca6dc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_3
       rect:
         serializedVersion: 2
         x: 378
@@ -126,18 +149,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -1, y: 67}
-        - {x: -23, y: 67}
-        - {x: -48, y: 50}
-        - {x: -53, y: 45}
-        - {x: -53, y: -26}
-        - {x: -34, y: -80}
-        - {x: 22, y: -80}
-        - {x: 45, y: -49}
-        - {x: 45, y: 32}
-        - {x: 41, y: 50}
-    - name: idle_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5320676e9a9889d40a3a0e70695afa19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_4
       rect:
         serializedVersion: 2
         x: 504
@@ -147,16 +169,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -30, y: 67}
-        - {x: -53, y: 38}
-        - {x: -53, y: -20}
-        - {x: -39, y: -80}
-        - {x: 23, y: -80}
-        - {x: 45, y: -22}
-        - {x: 45, y: 39}
-        - {x: 11, y: 67}
-    - name: idle_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2f9543458beb447b2c91d88f8302bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_5
       rect:
         serializedVersion: 2
         x: 630
@@ -166,17 +189,26 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -34, y: 68}
-        - {x: -53, y: 53}
-        - {x: -53, y: -10}
-        - {x: -42, y: -80}
-        - {x: 34, y: -80}
-        - {x: 45, y: -30}
-        - {x: 45, y: 57}
-        - {x: 8, y: 68}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a32ee01af210c0428ed74d71080a522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

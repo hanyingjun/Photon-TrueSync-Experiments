@@ -48,7 +48,7 @@ public class PhotonConverter : Photon.MonoBehaviour
         Output(EditorApplication.timeSinceStartup + " Started conversion of Unity networking -> Photon");
 
         //Ask to save current scene (optional)
-        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        //UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 
         EditorUtility.DisplayProgressBar("Converting..", "Starting.", 0);
 
@@ -66,8 +66,8 @@ public class PhotonConverter : Photon.MonoBehaviour
             int converted = 0;
             foreach (Object obj in objs)
             {
-                if (obj != null && obj.GetType() == typeof(GameObject))
-                    converted += ConvertNetworkView(((GameObject)obj).GetComponents<NetworkView>(), false);
+                //if (obj != null && obj.GetType() == typeof(GameObject))
+                //    converted += ConvertNetworkView(((GameObject)obj).GetComponents<NetworkView>(), false);
             }
             if (movePrefabs && converted > 0)
             {
@@ -94,22 +94,22 @@ public class PhotonConverter : Photon.MonoBehaviour
         }
 
         //Convert NetworkViews to PhotonViews in scenes
-        string[] sceneFiles = Directory.GetFiles("Assets/", "*.unity", SearchOption.AllDirectories);
-        foreach (string sceneName in sceneFiles)
-        {
-            EditorSceneManager.OpenScene(sceneName);
-            EditorUtility.DisplayProgressBar("Converting..", "Scene:" + sceneName, 0.2f);
+        //string[] sceneFiles = Directory.GetFiles("Assets/", "*.unity", SearchOption.AllDirectories);
+        //foreach (string sceneName in sceneFiles)
+        //{
+        //    UnityEditor.SceneManagement.EditorSceneManager.OpenScene(sceneName);
+        //    EditorUtility.DisplayProgressBar("Converting..", "Scene:" + sceneName, 0.2f);
 
-            int converted2 = ConvertNetworkView((NetworkView[])GameObject.FindObjectsOfType(typeof(NetworkView)), true);
-            if (converted2 > 0)
-            {
-                //This will correct all prefabs: The prefabs have gotten new components, but the correct ID's were lost in this case
-                PhotonViewHandler.HierarchyChange();    //TODO: most likely this is triggered on change or on save
+        //    int converted2 = ConvertNetworkView((NetworkView[])GameObject.FindObjectsOfType(typeof(NetworkView)), true);
+        //    if (converted2 > 0)
+        //    {
+        //        //This will correct all prefabs: The prefabs have gotten new components, but the correct ID's were lost in this case
+        //        PhotonViewHandler.HierarchyChange();    //TODO: most likely this is triggered on change or on save
 
-                Output("Replaced " + converted2 + " NetworkViews with PhotonViews in scene: " + sceneName);
-                EditorSceneManager.SaveOpenScenes();
-            }
-        }
+        //        Output("Replaced " + converted2 + " NetworkViews with PhotonViews in scene: " + sceneName);
+        //        UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
+        //    }
+        //}
 
         //Convert C#/JS scripts (API stuff)
         List<string> scripts = GetScriptsInFolder("Assets");
@@ -384,52 +384,52 @@ public class PhotonConverter : Photon.MonoBehaviour
         }
     }
 
-    static int ConvertNetworkView(NetworkView[] netViews, bool isScene)
-    {
-        for (int i = netViews.Length - 1; i >= 0; i--)
-        {
-            NetworkView netView = netViews[i];
-            PhotonView view = netView.gameObject.AddComponent<PhotonView>();
-            Undo.RecordObject(view, null);
+    //static int ConvertNetworkView(NetworkView[] netViews, bool isScene)
+    //{
+    //    for (int i = netViews.Length - 1; i >= 0; i--)
+    //    {
+    //        NetworkView netView = netViews[i];
+    //        PhotonView view = netView.gameObject.AddComponent<PhotonView>();
+    //        Undo.RecordObject(view, null);
 
-            if (isScene)
-            {
-                //Get scene ID
-                string str = netView.viewID.ToString().Replace("SceneID: ", "");
-                int firstSpace = str.IndexOf(" ");
-                str = str.Substring(0, firstSpace);
-                int oldViewID = int.Parse(str);
+    //        if (isScene)
+    //        {
+    //            //Get scene ID
+    //            string str = netView.viewID.ToString().Replace("SceneID: ", "");
+    //            int firstSpace = str.IndexOf(" ");
+    //            str = str.Substring(0, firstSpace);
+    //            int oldViewID = int.Parse(str);
 
-                view.viewID = oldViewID;
+    //            view.viewID = oldViewID;
 
-                #if !UNITY_MIN_5_3
-                EditorUtility.SetDirty(view);
-                EditorUtility.SetDirty(view.gameObject);
-                #endif
-            }
+    //            #if !UNITY_MIN_5_3
+    //            EditorUtility.SetDirty(view);
+    //            EditorUtility.SetDirty(view.gameObject);
+    //            #endif
+    //        }
 
-            view.ObservedComponents = new List<Component>();
-            view.ObservedComponents.Add(netView.observed);
+    //        view.ObservedComponents = new List<Component>();
+    //        view.ObservedComponents.Add(netView.observed);
 
-            if (netView.stateSynchronization == NetworkStateSynchronization.Unreliable)
-            {
-                view.synchronization = ViewSynchronization.Unreliable;
-            }
-            else if (netView.stateSynchronization == NetworkStateSynchronization.ReliableDeltaCompressed)
-            {
-                view.synchronization = ViewSynchronization.ReliableDeltaCompressed;
-            }
-            else
-            {
-                view.synchronization = ViewSynchronization.Off;
-            }
-            DestroyImmediate(netView, true);
-        }
-        AssetDatabase.Refresh();
-        AssetDatabase.SaveAssets();
+    //        if (netView.stateSynchronization == NetworkStateSynchronization.Unreliable)
+    //        {
+    //            view.synchronization = ViewSynchronization.Unreliable;
+    //        }
+    //        else if (netView.stateSynchronization == NetworkStateSynchronization.ReliableDeltaCompressed)
+    //        {
+    //            view.synchronization = ViewSynchronization.ReliableDeltaCompressed;
+    //        }
+    //        else
+    //        {
+    //            view.synchronization = ViewSynchronization.Off;
+    //        }
+    //        DestroyImmediate(netView, true);
+    //    }
+    //    AssetDatabase.Refresh();
+    //    AssetDatabase.SaveAssets();
 
-        return netViews.Length;
-    }
+    //    return netViews.Length;
+    //}
 
     static void Output(string str)
     {

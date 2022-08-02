@@ -482,7 +482,7 @@ public class PhotonEditor : EditorWindow
             GUILayout.Space(15);
         }
 #if !(UNITY_5_0 || UNITY_5)
-        else if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iPhone))
+        else if (!InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.Android) || !InternalEditorUtility.HasAdvancedLicenseOnBuildTarget(BuildTarget.iOS))
         {
             GUILayout.Label(CurrentLang.MobileExportNoteLabel);
             GUILayout.Space(15);
@@ -657,33 +657,33 @@ public class PhotonEditor : EditorWindow
         var types = GetAllSubTypesInScripts(typeof(MonoBehaviour));
 
         int countOldRpcs = 0;
-        foreach (var mono in types)
-        {
-            MethodInfo[] methods = mono.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        //foreach (var mono in types)
+        //{
+        //    MethodInfo[] methods = mono.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-            foreach (MethodInfo method in methods)
-            {
-                bool isOldRpc = false;
-                #pragma warning disable 618
-                // we let the Editor check for outdated RPC attributes in code. that should not cause a compile warning
-                if (method.IsDefined(typeof (RPC), false))
-                {
-                    countOldRpcs++;
-                    isOldRpc = true;
-                }
-                #pragma warning restore 618
+        //    foreach (MethodInfo method in methods)
+        //    {
+        //        bool isOldRpc = false;
+        //        #pragma warning disable 618
+        //        // we let the Editor check for outdated RPC attributes in code. that should not cause a compile warning
+        //        if (method.IsDefined(typeof (RPC), false))
+        //        {
+        //            countOldRpcs++;
+        //            isOldRpc = true;
+        //        }
+        //        #pragma warning restore 618
 
-                if (isOldRpc || method.IsDefined(typeof(PunRPC), false))
-                {
-                    currentRpcs.Add(method.Name);
+        //        if (isOldRpc || method.IsDefined(typeof(PunRPC), false))
+        //        {
+        //            currentRpcs.Add(method.Name);
 
-                    if (!additionalRpcs.Contains(method.Name) && !PhotonNetwork.PhotonServerSettings.RpcList.Contains(method.Name))
-                    {
-                        additionalRpcs.Add(method.Name);
-                    }
-                }
-            }
-        }
+        //            if (!additionalRpcs.Contains(method.Name) && !PhotonNetwork.PhotonServerSettings.RpcList.Contains(method.Name))
+        //            {
+        //                additionalRpcs.Add(method.Name);
+        //            }
+        //        }
+        //    }
+        //}
 
         if (additionalRpcs.Count > 0)
         {
